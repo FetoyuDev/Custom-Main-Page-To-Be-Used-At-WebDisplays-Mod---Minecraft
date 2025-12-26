@@ -2,36 +2,39 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>MC Dashboard</title>
+  <title>MC Panel</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <div class="container">
+    <h1>Minecraft Panel</h1>
 
-    <h1>MC Dashboard</h1>
-
-    <!-- Barra de busca -->
-    <form class="search" action="https://www.google.com/search" method="GET">
+    <form id="searchForm">
       <input
         type="text"
-        name="q"
+        id="searchInput"
         placeholder="Pesquisar..."
-        autocomplete="off"
+        autofocus
       >
     </form>
 
-    <!-- Favoritos -->
     <div class="favorites">
-      <a href="https://time.is" target="_blank">🕒 Hora</a>
-      <a href="https://wttr.in" target="_blank">🌦️ Clima</a>
-      <a href="https://soundcloud.com" target="_blank">🎵 SoundCloud</a>
-      <a href="https://web.whatsapp.com" target="_blank">💬 Whatsapp</a>
-      <a href="https://youtube.com" target="_blank">▶️ YouTube</a>
-      <a href="https://discord.com/app" target="_blank">💬 Discord</a>
+      <a href="https://discord.com/app" target="_self">Discord</a>
+      <a href="https://github.com" target="_self">GitHub</a>
+      <a href="https://web.whatsapp.com" target="_self">WhatsApp</a>
+      <a href="https://duckduckgo.com" target="_self">DuckDuckGo</a>
     </div>
-
   </div>
 
+  <script>
+    document.getElementById("searchForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const q = document.getElementById("searchInput").value.trim();
+      if (q !== "") {
+        window.location.href =
+          "https://duckduckgo.com/?q=" + encodeURIComponent(q);
+      }
+    });
+  </script>
 </body>
 </html>
