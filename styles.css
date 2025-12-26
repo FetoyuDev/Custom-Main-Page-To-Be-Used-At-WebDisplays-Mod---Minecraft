@@ -1,93 +1,104 @@
-/* Reset básico */
 * {
   box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Fundo transparente pro WebDisplays */
+/* Corpo ocupa tudo */
 body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background: transparent;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-family: "Segoe UI", Arial, sans-serif;
+  overflow: hidden;
 }
 
-/* Painel principal */
+/* FUNDO COM IMAGEM */
+.background {
+  position: fixed;
+  inset: 0;
+
+  background-image: url("background.jpg"); /* <<< SUA IMAGEM */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(6px) brightness(0.85);
+  transform: scale(1.05);
+
+  z-index: -1;
+}
+
+/* Painel central */
 .panel {
-  background: rgba(15, 15, 30, 0.75);
-  backdrop-filter: blur(8px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: rgba(15, 15, 30, 0.7);
+  backdrop-filter: blur(10px);
 
   padding: 30px 40px;
-  border-radius: 20px;
+  border-radius: 22px;
 
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
 
   min-width: 520px;
-  max-width: 700px;
-  width: 100%;
+  max-width: 720px;
+  width: 80%;
 
   text-align: center;
 }
 
 /* Título */
 .panel h1 {
-  margin: 0 0 20px;
-  font-size: 34px;
   color: white;
+  font-size: 34px;
+  margin-bottom: 20px;
 }
 
-/* Barra de busca */
+/* Busca */
 .panel input {
   width: 100%;
-  padding: 18px 20px;
+  padding: 18px;
 
   font-size: 22px;
-  border-radius: 14px;
+  border-radius: 16px;
   border: none;
   outline: none;
 
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   color: white;
-
   text-align: center;
 }
 
-/* Placeholder */
 .panel input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* Container dos botões */
+/* Favoritos */
 .favorites {
   margin-top: 25px;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 16px;
 }
 
 /* Botões */
 .favorites button {
   padding: 18px;
-
   font-size: 20px;
+
   border-radius: 14px;
   border: none;
-
   cursor: pointer;
 
-  background: rgba(80, 120, 255, 0.25);
+  background: rgba(100, 140, 255, 0.28);
   color: white;
 
   transition: background 0.2s ease;
 }
 
-/* Hover */
 .favorites button:hover {
-  background: rgba(80, 120, 255, 0.45);
+  background: rgba(100, 140, 255, 0.5);
 }
