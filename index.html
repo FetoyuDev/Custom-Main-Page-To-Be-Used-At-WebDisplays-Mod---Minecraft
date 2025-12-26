@@ -2,39 +2,51 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>MC Panel</title>
+  <title>Minecraft Panel</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
+
+  <div class="panel">
     <h1>Minecraft Panel</h1>
 
+    <!-- Barra de busca -->
     <form id="searchForm">
       <input
         type="text"
         id="searchInput"
-        placeholder="Pesquisar..."
-        autofocus
+        placeholder="Pesquisar na internet..."
+        autocomplete="off"
       >
     </form>
 
+    <!-- Botões favoritos -->
     <div class="favorites">
-      <a href="https://discord.com/app" target="_self">Discord</a>
-      <a href="https://github.com" target="_self">GitHub</a>
-      <a href="https://web.whatsapp.com" target="_self">WhatsApp</a>
-      <a href="https://duckduckgo.com" target="_self">DuckDuckGo</a>
+      <button onclick="go('https://discord.com/app')">Discord</button>
+      <button onclick="go('https://github.com')">GitHub</button>
+      <button onclick="go('https://web.whatsapp.com')">WhatsApp</button>
+      <button onclick="go('https://duckduckgo.com')">DuckDuckGo</button>
     </div>
   </div>
 
+  <!-- JS -->
   <script>
+    function go(url) {
+      window.location.href = url;
+    }
+
     document.getElementById("searchForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      const q = document.getElementById("searchInput").value.trim();
-      if (q !== "") {
+
+      const query = document.getElementById("searchInput").value.trim();
+      if (query !== "") {
         window.location.href =
-          "https://duckduckgo.com/?q=" + encodeURIComponent(q);
+          "https://duckduckgo.com/?q=" + encodeURIComponent(query);
       }
     });
   </script>
+
 </body>
 </html>
