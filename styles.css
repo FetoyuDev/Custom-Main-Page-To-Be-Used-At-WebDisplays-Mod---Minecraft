@@ -16,7 +16,7 @@ body {
   position: fixed;
   inset: 0;
 
-  background-image: url("background.jpg"); /* <<< SUA IMAGEM */
+  background-image: url("image-3.png"); /* <<< SUA IMAGEM */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -102,3 +102,4 @@ body {
 .favorites button:hover {
   background: rgba(100, 140, 255, 0.5);
 }
+
