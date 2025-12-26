@@ -4,25 +4,28 @@
   <meta charset="UTF-8">
   <title>Minecraft Panel</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+  <!-- Camada de fundo -->
+  <div class="background"></div>
+
+  <!-- Painel -->
   <div class="panel">
     <h1>Minecraft Panel</h1>
 
-    <!-- Barra de busca -->
+    <!-- Busca -->
     <form id="searchForm">
       <input
         type="text"
         id="searchInput"
-        placeholder="Pesquisar na internet..."
+        placeholder="Pesquisar..."
         autocomplete="off"
       >
     </form>
 
-    <!-- Botões favoritos -->
+    <!-- Favoritos -->
     <div class="favorites">
       <button onclick="go('https://discord.com/app')">Discord</button>
       <button onclick="go('https://github.com')">GitHub</button>
@@ -31,7 +34,6 @@
     </div>
   </div>
 
-  <!-- JS -->
   <script>
     function go(url) {
       window.location.href = url;
@@ -40,10 +42,10 @@
     document.getElementById("searchForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      const query = document.getElementById("searchInput").value.trim();
-      if (query !== "") {
+      const q = document.getElementById("searchInput").value.trim();
+      if (q !== "") {
         window.location.href =
-          "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+          "https://duckduckgo.com/?q=" + encodeURIComponent(q);
       }
     });
   </script>
