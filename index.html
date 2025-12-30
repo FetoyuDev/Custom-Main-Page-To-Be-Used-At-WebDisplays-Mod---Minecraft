@@ -32,8 +32,39 @@
       <button onclick="go('https://web.whatsapp.com')">WhatsApp</button>
       <button onclick="go('https://duckduckgo.com')">DuckDuckGo</button>
     </div>
+
+    <!-- BOTÃO DO LIVRO -->
+    <button class="book-btn" onclick="toggleBook()">
+      📘 Abrir livro
+    </button>
   </div>
 
+  <!-- LIVRO / MENU EXPANSÍVEL -->
+  <div id="bookOverlay" class="book-overlay">
+    <div class="book-panel">
+
+      <div class="book-header">
+        <span>📘 As Frases de Fetoyu</span>
+
+        <select onchange="setLanguage(this.value)">
+          <option value="pt">PT</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+
+        <button onclick="toggleBook()">✖</button>
+      </div>
+
+      <div id="bookContent" class="book-content"></div>
+
+      <div class="book-footer">
+        Compilado vivo. Atualizado conforme a mente do autor entra em curto-circuito.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JS INLINE (como você pediu) -->
   <script>
     function go(url) {
       window.location.href = url;
@@ -41,13 +72,52 @@
 
     document.getElementById("searchForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
       const q = document.getElementById("searchInput").value.trim();
       if (q !== "") {
         window.location.href =
           "https://duckduckgo.com/?q=" + encodeURIComponent(q);
       }
     });
+
+    function toggleBook() {
+      document.getElementById("bookOverlay").classList.toggle("open");
+    }
+
+    const book = {
+      pt: `
+        <h2>Filosofia do Caos Produtivo</h2>
+        <blockquote>Não preciso de equipamento. Eu sou o equipamento.</blockquote>
+        <blockquote>Criatividade sem regulação vira desgraça.</blockquote>
+
+        <h2>Minecraft</h2>
+        <blockquote>Minecraft + WebDisplays já é mais que suficiente.</blockquote>
+        <blockquote>Monitores infinitos não são exagero. São conceito.</blockquote>
+
+        <h2>Programação</h2>
+        <pre><code>
+if resultado == necessario:
+    print("Recurso encontrado")
+else:
+    print("Encontrei incrivelmente porra nenhuma")
+        </code></pre>
+      `,
+      en: `
+        <h2>Productive Chaos</h2>
+        <blockquote>I don’t need equipment. I am the equipment.</blockquote>
+        <blockquote>Unregulated creativity becomes chaos.</blockquote>
+      `,
+      es: `
+        <h2>Caos Creativo</h2>
+        <blockquote>No necesito equipo. Yo soy el equipo.</blockquote>
+        <blockquote>La creatividad sin control se convierte en desastre.</blockquote>
+      `
+    };
+
+    function setLanguage(lang) {
+      document.getElementById("bookContent").innerHTML = book[lang];
+    }
+
+    setLanguage("pt");
   </script>
 
 </body>
