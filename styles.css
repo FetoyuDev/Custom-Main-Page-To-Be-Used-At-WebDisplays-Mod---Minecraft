@@ -1,105 +1,85 @@
-* {
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
-
-/* Corpo ocupa tudo */
-body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* FUNDO COM IMAGEM */
-.background {
-  position: fixed;
-  inset: 0;
-
-  background-image: url("image-3.png"); /* <<< SUA IMAGEM */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  filter: blur(6px) brightness(0.85);
-  transform: scale(1.05);
-
-  z-index: -1;
-}
-
-/* Painel central */
-.panel {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  background: rgba(15, 15, 30, 0.7);
-  backdrop-filter: blur(10px);
-
-  padding: 30px 40px;
-  border-radius: 22px;
-
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
-
-  min-width: 520px;
-  max-width: 720px;
-  width: 80%;
-
-  text-align: center;
-}
-
-/* Título */
-.panel h1 {
-  color: white;
-  font-size: 34px;
-  margin-bottom: 20px;
-}
-
-/* Busca */
-.panel input {
+/* BOTÃO DO LIVRO */
+.book-btn {
+  margin-top: 20px;
   width: 100%;
-  padding: 18px;
-
-  font-size: 22px;
-  border-radius: 16px;
-  border: none;
-  outline: none;
-
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-  text-align: center;
-}
-
-.panel input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* Favoritos */
-.favorites {
-  margin-top: 25px;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-/* Botões */
-.favorites button {
-  padding: 18px;
+  padding: 16px;
   font-size: 20px;
-
   border-radius: 14px;
   border: none;
   cursor: pointer;
 
-  background: rgba(100, 140, 255, 0.28);
+  background: rgba(180, 120, 255, 0.3);
   color: white;
-
-  transition: background 0.2s ease;
 }
 
-.favorites button:hover {
-  background: rgba(100, 140, 255, 0.5);
+/* OVERLAY DO LIVRO */
+.book-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
+.book-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* PAINEL DO LIVRO */
+.book-panel {
+  width: 80%;
+  max-width: 900px;
+  max-height: 80vh;
+
+  background: rgba(20,20,40,0.9);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.book-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px;
+  color: white;
+  font-size: 20px;
+}
+
+/* CONTEÚDO */
+.book-content {
+  padding: 20px;
+  overflow-y: auto;
+  color: #ddd;
+}
+
+.book-content blockquote {
+  border-left: 4px solid #777;
+  padding-left: 12px;
+  margin: 12px 0;
+}
+
+.book-content pre {
+  background: #000;
+  padding: 12px;
+  border-radius: 8px;
+  color: #7CFF7C;
+}
+
+/* FOOTER */
+.book-footer {
+  padding: 12px;
+  font-size: 14px;
+  text-align: center;
+  color: #aaa;
+}
